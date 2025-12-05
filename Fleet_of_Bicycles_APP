@@ -1,0 +1,89 @@
+package myMain;
+import java.util.Scanner;
+import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Queue;
+import java.io.FileNotFoundException;
+import java.io.DataInput;
+import java.io.File;
+
+
+class Bicycle {        
+    // the Bicycle class has five fields
+    public int cadence, gear, speed;
+    String owner, type;
+    // the Bicycle class has one constructor
+    public Bicycle(int startCadence, int startSpeed, int startGear, String startType, String startOwner) {
+        this.gear = startGear;
+        this.cadence = startCadence;
+        this.speed = startSpeed;
+        this.type = startType;
+        this.owner = startOwner;
+    }
+    // the Bicycle class has a method to print information
+    public String getInfo (){
+    	String message;
+    	message = this.owner + " owns this " + this.type + " bicycle.";
+    	message += "\nCurrently we are in gear "+ this.gear + " and going " + this.speed + " MPH.";
+    	message += "\nThe cadence is " + this.cadence + " RPM.";
+    	return message;
+    }
+}
+
+public class BicycleAdvisor {
+	public static void main (String[] args) {
+	
+	 Scanner userinput = new Scanner(System.in);
+	
+	System.out.println("How many bicycles would you like to enter (1-6)? ");
+	int count = userinput.nextInt();
+	
+	while (count < 1 || count > 6) {
+		System.out.print("Please enter a number from 1 to 6: ");
+		count = userinput.nextInt();
+	}
+	
+	userinput.nextLine();
+	
+	Bicycle[] bikes = new Bicycle[count];
+	
+	System.out.println("\n--- Enter Bicycle Information ---");
+	
+	for (int i = 0; i < count; i++) {
+		System.out.println("\nBicycle #" + (i + 1));
+	
+	System.out.print("Enter cadence:");
+	int cadence = userinput.nextInt();
+	
+	System.out.print("Enter speed:");
+	int speed = userinput.nextInt();
+	
+	System.out.print("Enter gear:");
+	int gear = userinput.nextInt();
+	
+	userinput.nextLine();
+	
+	System.out.print("Enter bike type:");
+	String type = userinput.nextLine();
+	
+	System.out.print("Enter owner name:");
+	String owner = userinput.nextLine();
+	
+	bikes[i] = new Bicycle(cadence, speed, gear, type, owner);
+	}
+	
+	System.out.println("\n--- Bicycle Summary ---");
+	for (int i = 0; i < count; i++) {
+		System.out.println("\n--- Bicycle #" + (i + 1));
+		System.out.println(bikes[i].getInfo());
+	}
+	
+	
+	
+		
+	} 
+} 
